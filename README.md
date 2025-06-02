@@ -17,6 +17,8 @@ pip install -r requirements.txt
 ```
 
 ### 训练
-训练模型的关键代码在train文件夹中。我采用的模型参数和ViT-Tiny相当，可以直接加载预训练模型。我采用的是[MAE-Lite](https://github.com/wangsr126/MAE-Lite)中提供的mae_tiny_400e.pth.tar模型。
-### 测试
-测试模型的关键代码在test文件夹中，
+训练模型的关键代码在train文件夹中。我采用的模型参数和ViT-Tiny相当，可以直接加载预训练模型。我采用的是[MAE-Lite](https://github.com/wangsr126/MAE-Lite)中提供的mae_tiny_400e.pth.tar模型。具体的训练流程见train文件夹。
+### 测试 
+测试模型的关键代码在test文件夹中。测试的流程是，输入第一帧的图像和边界框标注进行初始化，之后在跟踪过程中，每次送入新的一帧图像，模型会给出标注结果，以此类推。具体的测试流程见test文件夹。
+
+### 声明
