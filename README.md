@@ -15,6 +15,10 @@ torch
 ```
 pip install -r requirements.txt
 ```
+我采用了LaSOT、GOT10K、MDOT的训练集，以及UAVDT、DTB70的测试集，这些数据集均有官方提供的免费下载方式，本仓库也包含了对它们的图像、标注读取方案。如果需要使用其它数据集，需要按照类似的方式处理。
+
+为了使环境正确找到对应的数据、模型位置，你应当在`train`和`test`文件夹中的`paths.py`文件分别修改对应的路径，使它们指向对应位置。
+
 
 ### 训练
 训练模型的关键代码在train文件夹中。我采用的模型参数和ViT-Tiny相当，可以直接加载预训练模型。我采用的是[MAE-Lite](https://github.com/wangsr126/MAE-Lite)中提供的mae_tiny_400e.pth.tar模型。具体的训练流程见train文件夹。
