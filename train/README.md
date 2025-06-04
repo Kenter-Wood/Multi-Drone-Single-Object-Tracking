@@ -27,4 +27,9 @@ python train/train.py --script multitrack --config multitrack --save_dir output 
 ```
 
 # 关键代码及修改指南
+当需要对训练的流程进行修改，例如改变优化器、损失函数、记录间隔配置时，需要在其它文件中修改。首先介绍训练的流程：
 
+1. 在`train.py`中，根据终端给定的参数生成相应的训练指令，指令会运行`run_training.py`
+2. `run_training.py`会接受上述参数，设定初始种子，并导向`train_script.py`中的run逻辑
+3. `train_script.py`负责多个模块的初始化设定，包括配置超参数、初始化日志、构建dataloader、构建模型网络、设置DDP训练、设置损失函数、优化器，以及构建一个actor
+4. 这里定义的actor可以将模型进行前向传递，并计算损失，
