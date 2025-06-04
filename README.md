@@ -7,12 +7,24 @@ This repository contains the experimental code from my undergraduate thesis proj
 方法上，我的实验参考了一部分开源方法的代码和思想，包括Aba-ViTrack的轻量化思路（[原始仓库](https://github.com/xyyang317/Aba-ViTrack)）、ODTrack的时序建模方案（[原始仓库](https://github.com/GXNU-ZhongLab/ODTrack)），以及TransMDOT的多无人机协同跟踪框架（[原始仓库](https://github.com/cgjacklin/transmdot)）。模型的训练、测试流程，以及模型搭建思路，则是参考了OSTrack（[原始仓库](https://github.com/botaoye/OSTrack)）和Pytracking架构。（[原始仓库](https://github.com/visionml/pytracking)）。
 ## 运行方案
 ### 环境配置和运行
-该仓库代码依赖以下库运行：
+该仓库代码依赖以下主要库运行：
 ```
 torch
+torchvision
+torchscale
+safetensors
+timm
+transformers
+numpy
+scipy
+opencv-python
+
 ```
-搭建环境通过requirements文件即可
+同时包含了一些用于数据处理和分析的其它库，如matplotlib、tensorboard等。
+
+当前使用环境的所有库已导出为`requirements.txt`，可通过以下指令安装环境。运行时采用的cuda版本为11.5，而torch使用了能够与其兼容的11.6版本。
 ```
+conda create -n Pytracking python=3.9
 pip install -r requirements.txt
 ```
 我采用了LaSOT、GOT10K、MDOT的训练集，以及UAVDT、DTB70的测试集，这些数据集均有官方提供的免费下载方式，本仓库也包含了对它们的图像、标注读取方案。如果需要使用其它数据集，需要按照类似的方式处理。
